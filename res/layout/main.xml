@@ -22,13 +22,15 @@
         android:layout_below="@id/inputText"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dip"
-        android:text="  OK  " />
+        android:text="   OK   " 
+        android:onClick="connectTelnet"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/ok"
         android:layout_alignTop="@id/ok"
-        android:text="Clear "
+        android:text=" Clear "
         android:onClick="clearText"
          />
 </RelativeLayout>
