@@ -23,7 +23,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dip"
         android:text="   OK   " 
-        android:onClick="connectTelnet"
         />
     <Button
         android:layout_width="wrap_content"
