@@ -17,7 +17,7 @@ import android.widget.EditText;
 
 public class NGRcontrol extends Activity 
 {
-	//private aplug applet = new aplug();
+
 	
     /** Called when the activity is first created. */
 	
@@ -38,44 +38,31 @@ public class NGRcontrol extends Activity
     
     public void connectTelnet()
     {    	
-    	String input = (String)findViewById(R.id.inputText).toString();
+    	final String inputText = (String)findViewById(R.id.inputText).toString();
     	
-    	Pattern ip = Pattern.compile("\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
-    	Matcher m = ip.matcher(input);
     	
-    	if(m.matches())
-    	{
-    		Socket telnet;
-    		PrintWriter out = null;
-    		try
-    		{
-    			telnet = new Socket(input, 23); //always port 23 for telnet protocol
-    			out = new PrintWriter(telnet.getOutputStream(), true);  
-
-    		}
-    		catch(UnknownHostException uhe)
-    		{
-    			//Android lets you use all your var.method stuff at the same time instead of var.method1(); var.method2(); etc
-    			new AlertDialog.Builder(this)
-    				.setMessage("Cannot find the IP address. Try again")
-    				.setTitle("Error")
-    				.show();
-    			
-    			uhe.getStackTrace();
-    		}
-    		catch(IOException ioe)
-    		{
-    			//Android lets you use all your var.method stuff at the same time instead of var.method1(); var.method2(); etc
-    			new AlertDialog.Builder(this)
-    				.setMessage("I/O problem. Try looking again. NGRcontroller.connectTelnet() ")
-    				.setTitle("Error")
-    				.show();
-    		}
-    		
-    		Intent control = new Intent(getApplicationContext(), Control.class);
-    		startActivity(control);
-
-    	}
+    }
+    
+	public static PrintWriter openConnection(String RCIP) {
+		Socket s;
+		PrintWriter out = null;
+		
+		try 
+		{
+			s = new Socket(RCIP, 23);
+			out = new PrintWriter(s.getOutputStream(), true);
+        } 
+		catch (UnknownHostException e) 
+		{
+            System.err.println("Cannot connect to or cannot find host.");
+            System.exit(1);
+        } 
+		catch (IOException e) 
+		{
+			System.out.println();
+			e.printStackTrace();
+		}
+        return out;
     }
 }
 

@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="lib" path="/home/cory/Dropbox/1Senior Year/ComputerEng Design/NGRcontrol/RCjar.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
