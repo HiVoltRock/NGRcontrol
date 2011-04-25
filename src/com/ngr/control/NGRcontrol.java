@@ -17,6 +17,8 @@ import android.widget.EditText;
 
 public class NGRcontrol extends Activity 
 {
+	//private aplug applet = new aplug();
+	
     /** Called when the activity is first created. */
 	
     @Override
@@ -76,6 +78,8 @@ public class NGRcontrol extends Activity
     	}
     }
 }
+
+
 
 
 
