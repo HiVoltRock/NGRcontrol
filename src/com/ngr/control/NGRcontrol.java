@@ -35,7 +35,7 @@ public class NGRcontrol extends Activity
     }
     
     //handles main controls for car operation
-    public void main()
+    public void main(View view)
     {    	
     	final String inputText = (String)findViewById(R.id.inputText).toString();
     	PrintWriter out = openConnection(inputText);
@@ -100,7 +100,7 @@ public class NGRcontrol extends Activity
 			alert.setTitle("Exception!");
 			alert.setMessage("Cannot connect or cannot find host. openConnection()");
 			e.printStackTrace();
-            System.exit(1);
+            //System.exit(1);
         } 
 		catch (IOException e) 
 		{

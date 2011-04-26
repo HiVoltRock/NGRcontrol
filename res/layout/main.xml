@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    >
     <TextView
         android:id="@+id/label"
         android:layout_width="fill_parent"
@@ -22,7 +23,9 @@
         android:layout_below="@id/inputText"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dip"
-        android:text="  OK  " />
+        android:text="  OK  " 
+        android:onClick="main"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

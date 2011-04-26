@@ -4,15 +4,14 @@
       android:versionCode="1"
       android:versionName="1.0">
     <uses-sdk android:minSdkVersion="7" />
-
-
-
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-    
-
-    
+    <!-- This is where you lock in landscape mode. If it's annoying to debug, just remove the line an add later 
+    		in the activity tag:		android:screenOrientation="landscape"
+     -->    
         <activity android:name=".NGRcontrol"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  
+                  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
