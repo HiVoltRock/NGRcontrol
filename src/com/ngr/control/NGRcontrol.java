@@ -14,12 +14,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ViewSwitcher;
 
-//try to switch with view switcher!
 public class NGRcontrol extends Activity 
 {
 
 	LinkedList<String> commandQ = new LinkedList<String>();
 	private ViewSwitcher switcher;
+	PrintWriter out;
 	
     //Called when the activity is first created
     @Override
@@ -38,58 +38,52 @@ public class NGRcontrol extends Activity
     	//gets text box by ID
     	final EditText inputText = (EditText)findViewById(R.id.inputText);
     	inputText.setText("");
-    	switcher.showNext();
     }
     
     //handles main controls for car operation
     public void main(View view)
     {    	
     	final String inputText = (String)findViewById(R.id.inputText).toString();
-    	PrintWriter out = openConnection(inputText);
+    	out = openConnection(inputText);
     	
+    	switcher.showNext();
     	
-//    	if(out != null)
-//    	{
-//    		while(true)
-//    		{
-//    			if(!commandQ.isEmpty())
-//    			{
-//        			try 
-//        			{
-//    					Thread.sleep(20L);
-//    				} 
-//        			catch (InterruptedException e) 
-//        			{
-//        				AlertDialog alert = new AlertDialog.Builder(this).create();
-//    					alert.setTitle("Exception!");
-//    					alert.setMessage("It seems you have an Interrupted Exception. main()");
-//    					e.printStackTrace();
-//    				}
-//        			
-//        			out.println("Element in command queue: " + commandQ.poll());
-//        			out.flush();
-//        			try
-//        			{
-//        				Thread.sleep(20L);
-//        			}
-//        			catch(InterruptedException e)
-//        			{
-//        				AlertDialog alert = new AlertDialog.Builder(this).create();
-//        				alert.setTitle("Exception!");
-//    					alert.setMessage("It seems you have an Interrupted Exception. main()");
-//    					e.printStackTrace();
-//        			}
-//    			}		
-//
-//    		}
-//    	}
-//    	else
-//    	{
-//    		AlertDialog alert = new AlertDialog.Builder(this).create();
-//    		alert.setTitle("Problem");
-//			alert.setMessage("Either the car IP is invalid, or car not connected");
-//    		System.exit(0);
-//    	}
+    	if(out != null)
+    	{
+    		while(true)
+    		{
+    			if(!commandQ.isEmpty())
+    			{
+        			try 
+        			{
+    					Thread.sleep(20L);
+    				} 
+        			catch (InterruptedException e) 
+        			{
+    					System.out.println("It seems you have an Interrupted Exception. main()");
+    					e.printStackTrace();
+    				}
+        			
+        			out.println(commandQ.poll());
+        			out.flush();
+        			try
+        			{
+        				Thread.sleep(20L);
+        			}
+        			catch(InterruptedException e)
+        			{
+    					System.out.println("It seems you have an Interrupted Exception. main()");
+    					e.printStackTrace();
+        			}
+    			}		
+
+    		}
+    	}
+    	else
+    	{
+			System.out.println("Either the car IP is invalid, or car not connected");
+    		System.exit(0);
+    	}
     	
     }
     
@@ -104,21 +98,43 @@ public class NGRcontrol extends Activity
         } 
 		catch (UnknownHostException e) 
 		{
-			AlertDialog alert = new AlertDialog.Builder(this).create();
-			alert.setTitle("Exception!");
-			alert.setMessage("Cannot connect or cannot find host. openConnection()");
+			System.out.println("Cannot connect or cannot find host. openConnection()");
 			e.printStackTrace();
             //System.exit(1);
         } 
 		catch (IOException e) 
 		{
-			AlertDialog alert = new AlertDialog.Builder(this).create();
-			alert.setTitle("Exception!");
-			alert.setMessage("Looks like you found an I/O Exception. openConnection()");
+			System.out.println("Looks like you found an I/O Exception. openConnection()");
 			e.printStackTrace();
 		}
+		
+		System.out.println("Successful socket return in openConnection()");
         return out;
     }
+	
+	public void forward(View view)
+	{
+		System.out.println("Pressed Forward");
+		commandQ.add("f\r");
+	}
+	
+	public void backward(View view)
+	{
+		System.out.println("Pressed Backward");
+		commandQ.add("b\r");
+	}
+	
+	public void left(View view)
+	{
+		System.out.println("Pressed left");
+		commandQ.add("l\r");
+	}
+	
+	public void right(View view)
+	{
+		System.out.println("Pressed right");
+		commandQ.add("r\r");
+	}
 }
 
 

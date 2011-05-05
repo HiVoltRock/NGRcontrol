@@ -56,6 +56,8 @@
     		android:text="Forward" 
     		android:layout_alignParentLeft="true"
     		android:layout_below="@+id/label"
+    		android:clickable="true"
+    		android:onClick="forward"
     		 >
     	</Button>
     	<Button 
@@ -65,15 +67,19 @@
     		android:text="Right" 
     		android:layout_alignParentRight="true"
     		android:layout_below="@+id/label"
+    		android:clickable="true"
+    		android:onClick="right"
     		>
 	    </Button>
 	    <Button 
-	    	android:id="@+id/button1" 
+	    	android:id="@+id/backwards" 
 	    	android:layout_height="wrap_content" 
 	    	android:layout_alignParentLeft="true" 
 	    	android:layout_width="wrap_content" 
 	    	android:text="Backwards"
 	    	android:layout_below="@+id/forward"
+	    	android:clickable="true"
+    		android:onClick="backward"
 	    	>
 	    </Button>
 	    <Button  
@@ -83,6 +89,8 @@
 	    	android:text="Left"
 	    	android:layout_below="@+id/label"
 	    	android:layout_toLeftOf="@+id/right"
+	    	android:clickable="true"
+    		android:onClick="left"
 	    	>
     	</Button>
     
