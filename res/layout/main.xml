@@ -1,37 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ViewSwitcher
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/viewSwitcher"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-        android:id="@+id/label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Please Enter IP Address:"
-        />
-    <EditText
-        android:id="@+id/inputText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/editbox_background"
-        android:layout_below="@id/label"
-        android:inputType="phone"/>
-    <Button
-        android:id="@+id/ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/inputText"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dip"
-        android:text="  OK  " 
-        android:onClick="main"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/ok"
-        android:layout_alignTop="@id/ok"
-        android:text="Clear "
-        android:onClick="clearText"
-         />
+    android:layout_height="fill_parent" >
+    <RelativeLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" >
+    	<TextView
+        	android:id="@+id/label"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:text="Please Enter IP Address:"
+        	/>
+    	<EditText
+        	android:id="@+id/inputText"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:background="@android:drawable/editbox_background"
+        	android:layout_below="@id/label"
+        	android:inputType="phone"/>
+    	<Button
+        	android:id="@+id/ok"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_below="@id/inputText"
+        	android:layout_alignParentRight="true"
+        	android:layout_marginLeft="10dip"
+        	android:text="  OK  " 
+        	android:onClick="main"
+        	/>
+    	<Button
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_toLeftOf="@id/ok"
+        	android:layout_alignTop="@id/ok"
+        	android:text="Clear "
+        	android:onClick="clearText"
+        	 />
+    </RelativeLayout>
+    <RelativeLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" >
+    	<TextView 
+    		android:layout_alignParentTop="true" 
+    		android:id="@+id/label" 
+    		android:text="Use the buttons below to navigate the car" 
+    		android:layout_height="wrap_content" 
+    		android:layout_width="wrap_content">
+    	</TextView>
+    	<Button 
+    		android:id="@+id/forward" 
+    		android:layout_width="wrap_content" 
+    		android:layout_height="wrap_content" 
+    		android:text="Forward" 
+    		android:layout_alignParentLeft="true"
+    		android:layout_below="@+id/label"
+    		 >
+    	</Button>
+    	<Button 
+    		android:id="@+id/right" 
+    		android:layout_width="wrap_content" 
+    		android:layout_height="wrap_content" 
+    		android:text="Right" 
+    		android:layout_alignParentRight="true"
+    		android:layout_below="@+id/label"
+    		>
+	    </Button>
+	    <Button 
+	    	android:id="@+id/button1" 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_alignParentLeft="true" 
+	    	android:layout_width="wrap_content" 
+	    	android:text="Backwards"
+	    	android:layout_below="@+id/forward"
+	    	>
+	    </Button>
+	    <Button  
+	    	android:id="@+id/left" 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_width="wrap_content" 
+	    	android:text="Left"
+	    	android:layout_below="@+id/label"
+	    	android:layout_toLeftOf="@+id/right"
+	    	>
+    	</Button>
+    
 </RelativeLayout>
+
+</ViewSwitcher>

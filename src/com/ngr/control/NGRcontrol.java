@@ -8,15 +8,18 @@ import java.util.LinkedList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ViewSwitcher;
 
-
+//try to switch with view switcher!
 public class NGRcontrol extends Activity 
 {
 
 	LinkedList<String> commandQ = new LinkedList<String>();
+	private ViewSwitcher switcher;
 	
     //Called when the activity is first created
     @Override
@@ -24,6 +27,9 @@ public class NGRcontrol extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        switcher = (ViewSwitcher) findViewById(R.id.viewSwitcher);
+        
     }
     
     //clears the text for the "...Enter IP..." textView
@@ -32,6 +38,7 @@ public class NGRcontrol extends Activity
     	//gets text box by ID
     	final EditText inputText = (EditText)findViewById(R.id.inputText);
     	inputText.setText("");
+    	switcher.showNext();
     }
     
     //handles main controls for car operation
@@ -40,48 +47,49 @@ public class NGRcontrol extends Activity
     	final String inputText = (String)findViewById(R.id.inputText).toString();
     	PrintWriter out = openConnection(inputText);
     	
-    	if(out != null)
-    	{
-    		while(true)
-    		{
-    			if(!commandQ.isEmpty())
-    			{
-        			try 
-        			{
-    					Thread.sleep(20L);
-    				} 
-        			catch (InterruptedException e) 
-        			{
-        				AlertDialog alert = new AlertDialog.Builder(this).create();
-    					alert.setTitle("Exception!");
-    					alert.setMessage("It seems you have an Interrupted Exception. main()");
-    					e.printStackTrace();
-    				}
-        			
-        			out.println("Element in command queue: " + commandQ.poll());
-        			out.flush();
-        			try
-        			{
-        				Thread.sleep(20L);
-        			}
-        			catch(InterruptedException e)
-        			{
-        				AlertDialog alert = new AlertDialog.Builder(this).create();
-        				alert.setTitle("Exception!");
-    					alert.setMessage("It seems you have an Interrupted Exception. main()");
-    					e.printStackTrace();
-        			}
-    			}		
-
-    		}
-    	}
-    	else
-    	{
-    		AlertDialog alert = new AlertDialog.Builder(this).create();
-    		alert.setTitle("Problem");
-			alert.setMessage("Either the car IP is invalid, or car not connected");
-    		System.exit(0);
-    	}
+    	
+//    	if(out != null)
+//    	{
+//    		while(true)
+//    		{
+//    			if(!commandQ.isEmpty())
+//    			{
+//        			try 
+//        			{
+//    					Thread.sleep(20L);
+//    				} 
+//        			catch (InterruptedException e) 
+//        			{
+//        				AlertDialog alert = new AlertDialog.Builder(this).create();
+//    					alert.setTitle("Exception!");
+//    					alert.setMessage("It seems you have an Interrupted Exception. main()");
+//    					e.printStackTrace();
+//    				}
+//        			
+//        			out.println("Element in command queue: " + commandQ.poll());
+//        			out.flush();
+//        			try
+//        			{
+//        				Thread.sleep(20L);
+//        			}
+//        			catch(InterruptedException e)
+//        			{
+//        				AlertDialog alert = new AlertDialog.Builder(this).create();
+//        				alert.setTitle("Exception!");
+//    					alert.setMessage("It seems you have an Interrupted Exception. main()");
+//    					e.printStackTrace();
+//        			}
+//    			}		
+//
+//    		}
+//    	}
+//    	else
+//    	{
+//    		AlertDialog alert = new AlertDialog.Builder(this).create();
+//    		alert.setTitle("Problem");
+//			alert.setMessage("Either the car IP is invalid, or car not connected");
+//    		System.exit(0);
+//    	}
     	
     }
     
